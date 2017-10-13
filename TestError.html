@@ -1,0 +1,36 @@
+<html>
+<head>
+<script>
+
+function checkFunction(){
+
+  try{
+  
+  var i=20;
+  
+  i=i/0;
+  
+  if(i/0) throw "divide by zero"
+  
+  }catch(err){
+  
+  alert(err.message);
+  
+  }finally{
+  
+  
+  console.log("in finally");
+  
+  }
+  
+
+}
+
+</script>
+<body>
+
+<input type="button" title"click me" onclick="checkFunction()" />
+
+</body>
+
+</html>
