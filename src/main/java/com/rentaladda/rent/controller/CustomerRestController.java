@@ -1,5 +1,7 @@
 package com.rentaladda.rent.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentaladda.rent.dao.CustomerDAO;
@@ -36,21 +39,21 @@ public class CustomerRestController {
 
 	@Autowired
 	private CustomerDAO customerDAO;
+	
 
 	ObjectMapper mapper = new ObjectMapper();
 	
 	@RequestMapping(value="/customers.htm",headers="Accept=*/*", produces={"application/json"})
-	public String getCustomers() {
-		
+	public String getCustomers() throws IOException {
 		CustomerDAO cust = new CustomerDAO();
 		try {
 			System.out.println("in customersssssss");
+		
 			return mapper.writeValueAsString(cust.list().get(0));
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 
