@@ -16,6 +16,12 @@ public class CustomerDAO {
 			customers.add(new Customer(101, "John", "Doe", "djohn@gmail.com", "121-232-3435"));
 			customers.add(new Customer(201, "Russ", "Smith", "sruss@gmail.com", "343-545-2345"));
 			customers.add(new Customer(301, "Kate", "Williams", "kwilliams@gmail.com", "876-237-2987"));
+			customers.add(new Customer(401, "John", "connor", "djohnconnor@gmail.com", "131-232-3435"));
+			customers.add(new Customer(501, "Russel", "Crowe", "srussellcrowe@gmail.com", "353-545-2345"));
+			customers.add(new Customer(601, "Kate", "Winslet", "kwinslet@gmail.com", "976-237-2987"));
+			customers.add(new Customer(701, "John", "pope", "djohn@gmail.com", "121-232-3435"));
+			customers.add(new Customer(801, "Steve", "Smith", "steveruss@gmail.com", "343-545-2345"));
+			customers.add(new Customer(901, "Kate", "Blanchett", "kwilliams@gmail.com", "866-237-2987"));
 		}
 
 		/**

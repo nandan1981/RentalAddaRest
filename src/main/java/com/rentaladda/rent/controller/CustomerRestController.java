@@ -40,7 +40,6 @@ public class CustomerRestController {
 	@Autowired
 	private CustomerDAO customerDAO;
 	
-
 	ObjectMapper mapper = new ObjectMapper();
 	
 	@RequestMapping(value="/customers.htm",headers="Accept=*/*", produces={"application/json"})
@@ -49,7 +48,7 @@ public class CustomerRestController {
 		try {
 			System.out.println("in customersssssss");
 		
-			return mapper.writeValueAsString(cust.list().get(0));
+			return mapper.writeValueAsString(cust.list());
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

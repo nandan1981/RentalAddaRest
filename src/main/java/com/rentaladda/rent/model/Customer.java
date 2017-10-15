@@ -1,5 +1,6 @@
 package com.rentaladda.rent.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Customer {
@@ -8,7 +9,7 @@ public class Customer {
 	private String lastName;
 	private String email;
 	private String mobile;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	
 	public Long getId() {
@@ -51,11 +52,11 @@ public class Customer {
 		this.mobile = mobile;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -67,7 +68,9 @@ public class Customer {
 		this.lastName = lastName;
 		this.email = email;
 		this.mobile = mobile;
-		this.dateOfBirth = new Date();
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy "); 
+		String date = DATE_FORMAT.format(new Date());
+		this.dateOfBirth = date;
 	}
 
 	public Customer() {
