@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.rentaladda.rent.model.Customer;
 
+@Repository
 public class CustomerDAO {
 	
 	// Dummy database. Initialize with some dummy values.
