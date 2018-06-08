@@ -21,7 +21,7 @@
 			function($scope, $http) {
 				var customerList = this;
 				//This gets the data from the restful web service which in turn fetches data via the DAO
-				$http.get('http://localhost:6627/RentalAddaRest/customers.htm')
+				$http.get('http://localhost:8080/RentalAddaRest/customers.htm')
 						.then(function(response) {
 							customerList.customers = response.data;
 						});
