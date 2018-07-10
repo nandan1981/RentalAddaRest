@@ -3,9 +3,12 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.Collection;
 
+
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import com.rentaladda.rent.controller.Arithmetic;
@@ -17,6 +20,8 @@ public class ArithmeticTest {
 	private int secondNumber;
 	private int expectedResult;
 	private Arithmetic arithmetic;
+	
+	private final Logger logger = LoggerFactory.getLogger(Arithmetic.class);
 	
 	public ArithmeticTest(int firstNumber,int secondNumber,int expectedResult) {
 		this.firstNumber = firstNumber;
@@ -37,7 +42,7 @@ public class ArithmeticTest {
 	
 	@Test
 	public void testArithmeticTest() {
-		System.out.println("Expected sum of numbers ==" +expectedResult);
+		logger.info("Expected sum of numbers ==" +expectedResult);
 		assertEquals(expectedResult, arithmetic.add(firstNumber, secondNumber));
 	}
 
