@@ -3,6 +3,7 @@
 <html ng-app="demo">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="search" href="/RentalAddaRest/Opensearchdescriptor.xml" type="application/opensearchdescription+xml" title="RentalAdda.in" />
 <title>Hello AngularJS</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
@@ -21,13 +22,13 @@
 			function($scope, $http) {
 				var customerList = this;
 				//This gets the data from the restful web service which in turn fetches data via the DAO
-				$http.get('http://localhost:6627/RentalAddaRest/customers.htm')
+				$http.get('http://localhost:8080/RentalAddaRest/customers.htm')
 						.then(function(response) {
 							customerList.customers = response.data;
 						});
 			});
 
-	$('th').each(function() {
+	 $('th').each(function() {
 		$(this).qtip({ // Grab some elements to apply the tooltip to
 			content : $(this).attr('tooltip'),
 			position : {
@@ -46,7 +47,7 @@
 			}
 		});
 
-	});
+	}); 
 </script>
 <style>
 h1 {

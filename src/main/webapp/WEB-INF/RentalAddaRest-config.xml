@@ -14,6 +14,6 @@
 	<mvc:default-servlet-handler />
 
 
-	<!-- <bean id="customerDAO" class="com.rentaladda.rent.dao.CustomerDAO" /> -->
+	 <bean id="customerDAO" class="com.rentaladda.rent.dao.CustomerDAO" /> 
 
 </beans>

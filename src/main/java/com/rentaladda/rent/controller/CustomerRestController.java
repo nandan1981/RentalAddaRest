@@ -104,5 +104,10 @@ public class CustomerRestController {
 
 		return new ResponseEntity(customer, HttpStatus.OK);
 	}
+	
+	public static int addNumbers(int x, int y) {
+		return x+y;
+		
+	}
 
 }

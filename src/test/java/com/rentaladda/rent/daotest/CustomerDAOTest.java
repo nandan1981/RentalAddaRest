@@ -1,4 +1,4 @@
-package com.rentaladda.rent.dao;
+package com.rentaladda.rent.daotest;
 
 import java.util.ArrayList;
 import java.util.List;
