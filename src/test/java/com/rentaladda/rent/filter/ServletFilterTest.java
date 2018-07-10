@@ -11,18 +11,15 @@ import javax.servlet.ServletResponse;
 public class ServletFilterTest implements javax.servlet.Filter {
 
 	public void destroy() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
 		
 	}
 

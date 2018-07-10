@@ -27,7 +27,6 @@ import com.rentaladda.rent.model.Customer;
 
 public class CustomerRestControllerTest {
 
-	private CustomerRestController custRestCtrl;
 	
 	@Mock
 	private CustomerDAO customerDAO;
@@ -38,7 +37,6 @@ public class CustomerRestControllerTest {
 	}
 	
 	
-	//@Test(expected = RuntimeException.class)
 	@Test
 	public void testWhenWrongNumberOfParametersAreSent() {
 		Assert.assertEquals(CustomerRestController.addNumbers(10, 30),40);
@@ -51,9 +49,7 @@ public class CustomerRestControllerTest {
 		
 		when(customerDAO.get(1L)).thenReturn(cust);
 		
-		//String str = custRestCtrl.getCustomer(1L);
 		
-		//verify(customerDAO.get(1L));
 	}
 
 }
