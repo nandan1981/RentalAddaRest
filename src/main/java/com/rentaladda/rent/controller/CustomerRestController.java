@@ -2,6 +2,8 @@ package com.rentaladda.rent.controller;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,12 +44,14 @@ public class CustomerRestController {
 	
 	ObjectMapper mapper = new ObjectMapper();
 	
+	private final Logger logger = LoggerFactory.getLogger(CustomerRestController.class);
+	
 	@RequestMapping(value="/customers.htm",headers="Accept=*/*", produces={"application/json"})
 	public String getCustomers() throws IOException {
 		CustomerDAO cust = new CustomerDAO();
 		try {
-			System.out.println("in customersssssss");
-		
+			logger.info("in customersssssss");
+		 
 			return mapper.writeValueAsString(cust.list());
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
