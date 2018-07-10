@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+ <ShortName>RentalAdda</ShortName>
+ <Description>Use Google to search RentalAdda</Description>
+ <Tags>RentalAdda</Tags>
+ <Url type="text/html"
+      template="http://www.google.com/search?q=site:RentalAdda {RentalAdda,Rent PS4,Rent,GoPro,Rent Go Pro}"/>
+</OpenSearchDescription>
