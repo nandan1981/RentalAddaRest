@@ -16,6 +16,7 @@ public class DBRepository {
 	private Environment environment;
 	
 	public DBRepository(){
+		//Empty constructor
 	}
 	
 	@Bean

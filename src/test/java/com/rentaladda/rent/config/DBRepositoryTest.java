@@ -2,6 +2,7 @@ package com.rentaladda.rent.config;
 
 import javax.sql.DataSource;
 
+import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
@@ -15,10 +16,8 @@ public class DBRepositoryTest {
 	@Autowired
 	private Environment environment;
 	
-	public DBRepositoryTest(){
-	}
 	
-	@Bean
+	@Before
 	public DataSource getMySQLDataSource(){
 		
 		DriverManagerDataSource myDS = new DriverManagerDataSource();
