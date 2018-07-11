@@ -70,6 +70,8 @@ public class CustomerDAO {
 		public Customer create(Customer customer) {
 			customer.setId(System.currentTimeMillis());
 			customers.add(customer);
+			String query = "insert into customer values('"+customer.getFirstName()+"','"+customer.getLastName()+"')";
+			jdbcTemplate.update(query);
 			return customer;
 		}
 
