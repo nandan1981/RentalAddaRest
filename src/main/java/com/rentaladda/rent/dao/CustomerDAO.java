@@ -3,12 +3,19 @@ package com.rentaladda.rent.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.rentaladda.rent.model.Customer;
 
 @Repository
 public class CustomerDAO {
+	
+	private JdbcTemplate jdbcTemplate;
+	
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {  
+	    this.jdbcTemplate = jdbcTemplate;  
+	}  
 	
 	// Dummy database. Initialize with some dummy values.
 		private static List<Customer> customers;
