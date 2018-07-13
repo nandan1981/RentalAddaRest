@@ -153,6 +153,13 @@
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>5.2.15.Final</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.4</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 	<build>
