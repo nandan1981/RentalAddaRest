@@ -40,6 +40,7 @@ public class CustomerDAOTest {
 	 @InjectMocks
 	 private CustomerDAO customerDAO;
 	 
+	 
 	 @Mock
 	 private JdbcTemplate jdbcTemplate;
 	 
