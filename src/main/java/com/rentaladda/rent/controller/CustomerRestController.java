@@ -46,7 +46,7 @@ public class CustomerRestController {
 	
 	private final Logger logger = LoggerFactory.getLogger(CustomerRestController.class);
 	
-	@RequestMapping(value="/customers.htm",headers="Accept=*/*", produces={"application/json"})
+	@RequestMapping(value="/customers.htm", method = RequestMethod.GET,headers="Accept=*/*", produces={"application/json"})
 	public String getCustomers() throws IOException {
 		
 		try {
@@ -58,7 +58,7 @@ logger.info("in customersssssss");
 		return null;
 	}
 
-	@RequestMapping(value="/customerCount.htm",headers="Accept=*/*", produces={"application/json"})
+	@RequestMapping(value="/customerCount.htm", method = RequestMethod.GET,headers="Accept=*/*", produces={"application/json"})
 	public String getCustomerCount() throws IOException {
 		
 		try {

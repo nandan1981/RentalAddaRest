@@ -16,50 +16,48 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
-<script>
-	angular.module('demo', []).controller(
-			'CustomerListController',
-			function($scope, $http) {
-				var customerList = this;
-				//This gets the data from the restful web service which in turn fetches data via the DAO
-				$http.get('http://localhost:8081/RentalAddaRest/customers.htm')
-						.then(function(response) {
-							customerList.customers = response.data;
-						});
-				
-				var customerCount;
-				//This gets the data from the restful web service which in turn fetches count via the DAO
-				$http.get('http://localhost:8081/RentalAddaRest/customerCount.htm')
-						.then(function(response) {
-							customerCount = response.data;
-						});				
-				
-			});
-
-	 $('th').each(function() {
-		$(this).qtip({ // Grab some elements to apply the tooltip to
-			content : $(this).attr('tooltip'),
-			position : {
-				target : 'mouse',
-				adjust : {
-					mouse : true
-				// Can be omitted (e.g. default behaviour)
-				}
-			},
-			style : {
-				classes : 'qtip-blue qtip-shadow qtip-dark qtip-rounded',
-				widget : true
-			},
-			show : {
-				delay : 100
-			}
+<script>	angular.module('demo', []).controller(
+		'CustomerListController',
+		function($scope, $http) {
+			var customerList = this;
+			//This gets the data from the restful web service which in turn fetches data via the DAO
+			$http.get('http://localhost:8081/RentalAddaRest/customers.htm')
+					.then(function(response) {
+						customerList.customers = response.data;
+					});
+			
+			var customerCount;
+			//This gets the data from the restful web service which in turn fetches count via the DAO
+			$http.get('http://localhost:8081/RentalAddaRest/customerCount.htm')
+					.then(function(response) {
+						customerCount = response.data;
+					});				
+			
 		});
 
-	}); 
-</script>
+ $('th').each(function() {
+	$(this).qtip({ // Grab some elements to apply the tooltip to
+		content : $(this).attr('tooltip'),
+		position : {
+			target : 'mouse',
+			adjust : {
+				mouse : true
+			// Can be omitted (e.g. default behaviour)
+			}
+		},
+		style : {
+			classes : 'qtip-blue qtip-shadow qtip-dark qtip-rounded',
+			widget : true
+		},
+		show : {
+			delay : 100
+		}
+	});
+
+}); </script>
 <style>
 h1 {
-	font-family: lato black;
+	font-family: lato black; text-align: center;
 }
 
 p {
@@ -120,10 +118,9 @@ qtip-tipped {
 } /* Tipped style */
 </style>
 </head>
-<body>
-	<!-- <spring:url value="/resources/images" var="images" /> -->
+<body><img src="resources/images/logo.png" style="width:100px;height:100px;" />
 	<h1>
-		RentalAdda Customer List <img src="resources/images/logo.png" />
+		 <div class="centre">RentalAdda Customer List </div>
 	</h1>
 	<p>Total Customers : {{customerCount}}</p>
 	<div class="form-group">
@@ -135,7 +132,7 @@ qtip-tipped {
 	<div class="panel panel-default">
 		<div ng-controller="CustomerListController as customerList"
 			class="container-fluid panel-body">
-			<table class="table table-responsive table-hover">
+			<table class="table table-responsive table-hover table-striped table-bordered">
 				<tr>
 					<th class="col-sm-2" tooltip="ID"><p>ID</p></th>
 					<th class="col-sm-2" tooltip="First Name"><p>First Name</p></th>
