@@ -21,8 +21,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rentaladda.rent.dao.CustomerDAO;
+import com.rentaladda.rent.dao.CustomerDAOImpl;
 import com.rentaladda.rent.model.Customer;
+import com.rentaladda.rent.service.CustomerRestServiceImpl;
 
 /**
  * 
@@ -39,7 +40,7 @@ import com.rentaladda.rent.model.Customer;
 public class CustomerRestController {
 
 	@Autowired
-	private CustomerDAO customerDAO;
+	private CustomerRestServiceImpl service;
 	
 	ObjectMapper mapper = new ObjectMapper();
 	
@@ -47,24 +48,34 @@ public class CustomerRestController {
 	
 	@RequestMapping(value="/customers.htm",headers="Accept=*/*", produces={"application/json"})
 	public String getCustomers() throws IOException {
-		CustomerDAO cust = new CustomerDAO();
+		
 		try {
-			logger.info("in customersssssss");
-		 
-			return mapper.writeValueAsString(cust.list());
+logger.info("in customersssssss");
+			return mapper.writeValueAsString(service.list());
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
+	@RequestMapping(value="/customerCount.htm",headers="Accept=*/*", produces={"application/json"})
+	public String getCustomerCount() throws IOException {
+		
+		try {
+			return mapper.writeValueAsString(service.count());
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	/**
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value="/getcustomerbyid/{id}",method = RequestMethod.GET, headers="Accept=*/*", produces={"application/json"})
-	@ResponseBody
-	public String getCustomer(@PathVariable("id") Long id) throws JsonProcessingException {
+//	@RequestMapping(value="/getcustomerbyid/{id}",method = RequestMethod.GET, headers="Accept=*/*", produces={"application/json"})
+//	@ResponseBody
+/*	public String getCustomer(@PathVariable("id") Long id) throws JsonProcessingException {
 
 		Customer customer = customerDAO.get(id);
 		if (customer == null) {
@@ -72,12 +83,17 @@ public class CustomerRestController {
 		}
 
 		return mapper.writeValueAsString(customer);
-	}
+	}*/
 
 	@PostMapping(value = "/customers")
 	public Object createCustomer(@RequestBody Customer customer) {
-		customerDAO.create(customer);
-		return new ResponseEntity(customer, HttpStatus.OK);
+		boolean resp = service.insert(customer);
+		
+		if(resp == true) {
+			return new ResponseEntity(customer, HttpStatus.OK);
+		}else {
+			return new ResponseEntity(customer, HttpStatus.METHOD_FAILURE);
+		}
 	}
 
 
@@ -86,22 +102,22 @@ public class CustomerRestController {
 	 * @return
 	 */
 	@DeleteMapping("/customers/{id}")
-	public ResponseEntity deleteCustomer(@PathVariable Long id) {
-
-		if (null == customerDAO.delete(id)) {
+	public ResponseEntity deleteCustomer(@PathVariable Integer id) {
+		if (false == service.delete(id)) {
 			return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity(id, HttpStatus.OK);
-
 	}
 
 	@PutMapping("/customers/{id}")
-	public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+	public ResponseEntity updateCustomer(@PathVariable Integer id, @RequestBody Customer customer) {
 
-		customer = customerDAO.update(id, customer);
+		boolean resp = service.update(id, customer);
 
 		if (null == customer) {
 			return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
+		} else if(resp == false) {
+			return new ResponseEntity("The update failed for ID " + id, HttpStatus.BAD_REQUEST);
 		}
 
 		return new ResponseEntity(customer, HttpStatus.OK);
@@ -109,7 +125,10 @@ public class CustomerRestController {
 	
 	public static int addNumbers(int x, int y) {
 		return x+y;
-		
+	}
+	
+	public void setCustomerService(CustomerRestServiceImpl service) {
+		this.service = service;
 	}
 
 }

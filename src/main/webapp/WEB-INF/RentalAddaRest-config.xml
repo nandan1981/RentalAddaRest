@@ -7,13 +7,26 @@
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd
 	 http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        
 	<mvc:resources mapping="/resources/**" location="/resources/"
 		cache-period="31556926" />
+		
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.rentaladda.rent" />
 	<mvc:default-servlet-handler />
 
-	<import resource="/dataSource-Config.xml"></import>
-	 <bean id="customerDAO" class="com.rentaladda.rent.dao.CustomerDAO" /> 
+	<import resource="dataSource-config.xml"></import>
+	
+	 <bean id="customerDAOImpl" class="com.rentaladda.rent.dao.CustomerDAOImpl" >
+	 <property name="jdbcTemplate" ref="jdbcTemplate"></property>  
+	 </bean>
+	 
+	 <bean id="customerService" class="com.rentaladda.rent.service.CustomerRestServiceImpl" > 
+	  <property name="customerDAOImpl" ref="customerDAOImpl" />
+	 </bean>
 
+	 <bean id="customerRestController" class="com.rentaladda.rent.controller.CustomerRestController" >
+	 	<property name="customerService" ref="customerService" />
+	 </bean>
+	 
 </beans>

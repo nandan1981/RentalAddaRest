@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Customer {
-	private Long id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -12,11 +12,11 @@ public class Customer {
 	private String dateOfBirth;
 	
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -62,7 +62,7 @@ public class Customer {
 
 
 
-	public Customer(long id, String firstName, String lastName, String email, String mobile) {
+	public Customer(Integer id, String firstName, String lastName, String email, String mobile) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

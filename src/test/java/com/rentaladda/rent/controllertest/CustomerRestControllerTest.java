@@ -13,7 +13,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rentaladda.rent.controller.CustomerRestController;
-import com.rentaladda.rent.dao.CustomerDAO;
+import com.rentaladda.rent.dao.CustomerDAOImpl;
 import com.rentaladda.rent.model.Customer;
 
 /**
@@ -29,7 +29,7 @@ public class CustomerRestControllerTest {
 
 	
 	@Mock
-	private CustomerDAO customerDAO;
+	private CustomerDAOImpl customerDAO;
 	
 	@Before
 	public void setUp() {
@@ -47,7 +47,7 @@ public class CustomerRestControllerTest {
 	public void testTheGetMethodFromDAO() throws JsonProcessingException {
 		Customer cust = new Customer();
 		
-		when(customerDAO.get(1L)).thenReturn(cust);
+		when(customerDAO.get(1)).thenReturn(cust);
 		
 		
 	}

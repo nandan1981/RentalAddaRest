@@ -26,6 +26,14 @@
 						.then(function(response) {
 							customerList.customers = response.data;
 						});
+				
+				var customerCount;
+				//This gets the data from the restful web service which in turn fetches count via the DAO
+				$http.get('http://localhost:8081/RentalAddaRest/customerCount.htm')
+						.then(function(response) {
+							customerCount = response.data;
+						});				
+				
 			});
 
 	 $('th').each(function() {
@@ -115,8 +123,9 @@ qtip-tipped {
 <body>
 	<!-- <spring:url value="/resources/images" var="images" /> -->
 	<h1>
-		RentalAdda Customer List <img src="/images/logo.png" />
+		RentalAdda Customer List <img src="resources/images/logo.png" />
 	</h1>
+	<p>Total Customers : {{customerCount}}</p>
 	<div class="form-group">
 		<div class="col-md-6">
 			<input type="text" [(ngModel)]="searchText" class="form-control"
